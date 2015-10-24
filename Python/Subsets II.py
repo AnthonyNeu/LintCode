@@ -27,4 +27,3 @@ class Solution:
                 subsetsHelper(i, current)
         subsetsHelper(0, [])
         return result
-        
