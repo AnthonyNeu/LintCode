@@ -24,4 +24,3 @@ class Solution:
                         else:
                             dp[i][j] = min(dp[i][j], dp[i - 1][k] + abs(A[i] - j))
         return min(dp[m - 1][:])
-        
