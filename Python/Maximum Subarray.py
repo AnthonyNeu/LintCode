@@ -16,4 +16,3 @@ class Solution:
             max_end_here = max(max_end_here + num, num)
             max_value = max(max_end_here, max_value)
         return max_value
-        
