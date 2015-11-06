@@ -36,7 +36,7 @@ class Solution:
         # write your code here
         if not root:
             return float('-inf')
-        if start == root.start and end == root.end:
+        if root.start >= start and end >= root.end:
             return root.max
         mid = root.start + (root.end - root.start) / 2
         if mid >= end:
@@ -45,3 +45,27 @@ class Solution:
             return self.query(root.right, start, end)
         else:
             return max(self.query(root.left, start, mid), self.query(root.right, mid + 1, end))
+
+class Solution2: 
+    # @param root, start, end: The root of segment tree and 
+    #                          an segment / interval
+    # @return: The maximum number in the interval [start, end]
+    def query(self, root, start, end):
+        # write your code here
+        if not root or start > end:
+            return float('-inf')
+        if start <= root.start and root.end <= end:
+            return root.max
+        mid = root.start + (root.end - root.start) / 2
+        left_max, right_max = float('-inf'), float('-inf')
+        if start <= mid:
+            if mid < end:
+                left_max = self.query(root.left, start, mid)
+            else:
+                left_max = self.query(root.left, start, end)
+        if mid < end:
+            if start <= mid:
+                right_max = self.query(root.right, mid + 1, end)
+            else:
+                right_max = self.query(root.right, start, end)
+        return max(left_max, right_max)
