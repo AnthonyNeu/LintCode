@@ -20,7 +20,6 @@ The outlines are：
 ]
 """
 
-
 import heapq
 from collections import defaultdict
 
@@ -52,26 +51,25 @@ class Solution:
             building = Building(height)
             events[start].starts.append(building)
             events[end].ends.append(building)
-
         ret = []
         cur_heap = []
-        cur_max_hi = 0
+        # store the previous max height of building
+        cur_max_hi = float('-inf')
+        # store the beginning x-coordinate of this outline
         begin = None
+        # sort the x-coordinate and get each building in order
         for x, event in sorted(events.items()):
             for building in event.starts:  # beginning
                 heapq.heappush(cur_heap, building)
             for building in event.ends:  # finishing
                 building.deleted = True
-
             while cur_heap and cur_heap[0].deleted:
                 heapq.heappop(cur_heap)
-
             new_hi = cur_heap[0].h if cur_heap else 0
             if cur_max_hi != new_hi:
-                if cur_max_hi != 0:
+                if cur_max_hi > 0:
                     ret.append([begin, x, cur_max_hi])
                 begin = x
-
                 cur_max_hi = new_hi
-
         return ret
+
