@@ -53,8 +53,6 @@ class Solution:
                         op.left = nums.pop()
                         nums.append(op)
                     ops.append(ExpressionTreeNode(string))
-                elif string == '(':
-                    ops.append(ExpressionTreeNode(string))
                 else:
                     while ops and ops[-1].symbol != '(':
                         op = ops.pop()
