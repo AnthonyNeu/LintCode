@@ -56,4 +56,3 @@ class Solution:
                 root.right = root.left
                 root.left = None
             root = root.right
- 
