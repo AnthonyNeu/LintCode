@@ -99,4 +99,3 @@ class Solution:
                     if left > 0:
                         left -= 1
         return dp[k][length - 1]
-        
