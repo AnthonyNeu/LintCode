@@ -83,3 +83,61 @@ class Solution:
                 else:
                     stack.append(token)
         return int(stack.pop())
+
+# do the calculation during the building of expression tree
+class Solution:
+    # @param expression: a list of strings;
+    # @return: an integer
+    def evaluateExpression(self, expression):
+        # write your code here
+        ops, result = [], []
+        for string in expression:
+            if string.isdigit():
+                result.append(string)
+            else:
+                if string == '(':
+                    ops.append(string)
+                elif string == '-' or string == '+':
+                    while ops and ops[-1] != '(':
+                        op = ops.pop()
+                        right = result.pop()
+                        left = result.pop()
+                        result.append(self.calculate(left, right, op))
+                    ops.append(string)
+                elif string == '*' or string == '/':
+                    while ops and ops[-1] not in ('+', '(', '-'):
+                        op = ops.pop()
+                        right = result.pop()
+                        left = result.pop()
+                        result.append(self.calculate(left, right, op))
+                    ops.append(string)
+                elif string == '(':
+                    ops.append(string)
+                else:
+                    while ops and ops[-1] != '(':
+                        op = ops.pop()
+                        right = result.pop()
+                        left = result.pop()
+                        result.append(self.calculate(left, right, op))
+                    # pop the left bracket
+                    ops.pop()
+        while ops:
+            op = ops.pop()
+            right = result.pop()
+            left = result.pop()
+            result.append(self.calculate(left, right, op))
+        if not result:
+            return 0
+        else:
+            return int(result[-1])
+
+    def calculate(self, left, right, op):
+        i0, i1 = int(left), int(right)
+        if op == "+":
+            return str(i0 + i1)
+        elif op == "-":
+            return str(i0 - i1)
+        elif op == "*":
+            return str(i0 * i1)
+        elif op == "/":
+            return str(i0 / i1)
