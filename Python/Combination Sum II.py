@@ -6,7 +6,7 @@ Each number in C may only be used once in the combination.
 Example
 For example, given candidate set 10,1,6,7,2,1,5 and target 8,
 
-A solution set is: 
+A solution set is:
 
 [1,7]
 
@@ -22,7 +22,7 @@ Elements in a combination (a1, a2, … , ak) must be in non-descending order. (i
 The solution set must not contain duplicate combinations.
 """
 
-class Solution:    
+class Solution:
     """
     @param candidates: Given the candidate numbers
     @param target: Given the target number

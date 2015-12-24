@@ -1,7 +1,7 @@
 """
-Given an array A of integer with size of n( means n books and number of pages of each book) and k people to copy the book. 
-You must distribute the continuous id books to one people to copy. 
-(You can give book A[1],A[2] to one people, but you cannot give book A[1], A[3] to one people, because book A[1] and A[3] is not continuous.) Each person have can copy one page per minute. 
+Given an array A of integer with size of n( means n books and number of pages of each book) and k people to copy the book.
+You must distribute the continuous id books to one people to copy.
+(You can give book A[1],A[2] to one people, but you cannot give book A[1], A[3] to one people, because book A[1] and A[3] is not continuous.) Each person have can copy one page per minute.
 Return the number of smallest minutes need to copy all the books.
 
 Example
