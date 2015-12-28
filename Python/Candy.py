@@ -22,6 +22,12 @@ class Solution:
     # @return {int} the minimum candies you must give
     def candy(self, ratings):
         # Write your code here
+        """
+        first scan make sure that a child with a higher rating than his previous one get one mre candy.
+        And also a child with equal rating compared to the previous one get 1 candy.
+        the second scan is for the situation when the child with less rating compared to previous one:
+        so we need to compute the candy[i] before get the candy for child i - 1.
+        """
         candy = [1 for _ in range(len(ratings))]
         for i in range(1, len(ratings)):
             if ratings[i - 1] < ratings[i]:
