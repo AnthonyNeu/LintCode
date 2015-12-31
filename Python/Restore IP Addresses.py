@@ -43,7 +43,7 @@ class Solution:
         M = len(s)
         result = []
         for i in range(1,min(4, M - 2)):
-            for j in range(i + 1,min(i + 4, M - 1)):
+            for j in range(i + 1, min(i + 4, M - 1)):
                 for k in range(j + 1,min(j + 4, M)):
                     s1, s2, s3, s4 = s[:i], s[i:j], s[j:k], s[k:]
                     if self.isValid(s1) and self.isValid(s2) and self.isValid(s3) and self.isValid(s4):

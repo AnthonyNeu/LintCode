@@ -23,6 +23,7 @@ class Solution:
         if k >= length:
             return max(pages)
         total_sum = sum(pages)
+
         # check whether everyone can copy at most x pages or not
         def valid(x):
             cur_sum, people, idx = 0, 0, 0
@@ -33,6 +34,7 @@ class Solution:
                 cur_sum += pages[idx]
                 idx += 1
             return people < k and cur_sum <= x
+
         def binary_search(left, right):
             while left + 1 < right:
                 mid = left + (right - left) / 2
@@ -51,7 +53,6 @@ class Solution:
     # @return: an integer
     def copyBooks(self, pages, k):
         # write your code here
-        import itertools
         length = len(pages)
         sum_from_start = [0 for _ in range(length)]
         for i in range(length):
