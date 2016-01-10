@@ -49,7 +49,7 @@ class Solution:
         result, self.max_level = [], 0
         while True:
             level = []
-            
+
             def dfs(root, cur_level):
                 if root is None or cur_level > self.max_level:
                     return
@@ -64,4 +64,3 @@ class Solution:
             result.append(list(level))
             self.max_level += 1
         return result
-        

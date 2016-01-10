@@ -19,10 +19,10 @@ class Solution:
     """
     @param root: The root of binary tree.
     @return: True if the binary tree is BST, or false
-    """  
+    """
     def isValidBST(self, root):
         # write your code here
-        
+
         def isValidBSTHelper(root, left, right):
             if root is None:
                 return True
@@ -32,3 +32,18 @@ class Solution:
             is_right_valid = True if root.right is None else isValidBSTHelper(root.right, root.val, right)
             return is_left_valid and is_right_valid
         return isValidBSTHelper(root, float('-inf'), float('inf'))
+
+class Solution(object):
+    prev = None
+    def isValidBST(self, root):
+
+        def helper(root):
+            if not root:
+                return True
+            if not helper(root.left):
+                return False
+            if self.prev and self.prev.val >= root.val:
+                return False
+            self.prev = root
+            return helper(root.right)
+        return helper(root)
